@@ -1,0 +1,56 @@
+body {
+margin: 0;
+font-family: Tahoma, sans-serif;
+background: #202123;
+color: white;
+}
+
+.container {
+width: 90%;
+max-width: 800px;
+margin: 20px auto;
+}
+
+h1 {
+text-align: center;
+}
+
+#messages {
+height: 500px;
+overflow-y: auto;
+background: #343541;
+padding: 15px;
+border-radius: 10px;
+}
+
+.user, .ai {
+padding: 10px;
+margin: 10px 0;
+border-radius: 8px;
+}
+
+.user {
+background: #0b93f6;
+}
+
+.ai {
+background: #444654;
+}
+
+.input-area {
+display: flex;
+margin-top: 10px;
+}
+
+#userInput {
+flex: 1;
+padding: 10px;
+font-size: 16px;
+}
+
+#sendBtn {
+padding: 10px 20px;
+font-size: 16px;
+cursor: pointer;
+}
+
