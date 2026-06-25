@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 // API Key خودت از OpenRouter
-const API_KEY = "API_KEY_HERE";
+const API_KEY = "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";
 
 app.post("/chat", async (req, res) => {
 try {
