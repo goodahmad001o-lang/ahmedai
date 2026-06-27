@@ -1,3 +1,4 @@
+alert("JS Loaded");
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const messages = document.getElementById("messages");
