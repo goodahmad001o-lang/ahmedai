@@ -1,4 +1,3 @@
-writing{variant="standard" id="48271"}
 const express = require("express");
 const cors = require("cors");
 
