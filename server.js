@@ -1,3 +1,4 @@
+writing{variant="standard" id="48271"}
 const express = require("express");
 const cors = require("cors");
 
@@ -10,53 +11,50 @@ app.use(express.static(__dirname));
 const API_KEY = process.env.OPENROUTER_API_KEY;
 
 app.post("/chat", async (req, res) => {
-try {
-const response = await fetch(
-"https://openrouter.ai/api/v1/chat/completions",
-{
-method: "POST",
-headers: {
-"Authorization": `Bearer ${API_KEY}`,
-"Content-Type": "application/json",
-"HTTP-Referer": "https://ahmedai-gqs8.onrender.com",
-"X-Title": "AhmedAI"
-},
-body: JSON.stringify({
-model: "mistralai/mistral-7b-instruct",
-messages: [
-{
-role: "system",
-content: "Your name is AhmedAI. Answer in Persian."
-},
-{
-role: "user",
-content: req.body.message
-}
-]
-})
-}
-);
+    try {
+        const response = await fetch(
+            "https://openrouter.ai/api/v1/chat/completions",
+            {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${API_KEY}`,
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "https://ahmedai-gqs8.onrender.com",
+                    "X-Title": "AhmedAI"
+                },
+                body: JSON.stringify({
+                    model: "mistralai/mistral-7b-instruct",
+                    messages: [
+                        {
+                            role: "system",
+                            content: "Your name is AhmedAI. Answer in Persian."
+                        },
+                        {
+                            role: "user",
+                            content: req.body.message
+                        }
+                    ]
+                })
+            }
+        );
 
-```
-    const data = await response.json();
+        const data = await response.json();
 
-    res.json({
-        reply: data.choices?.[0]?.message?.content || "پاسخی دریافت نشد"
-    });
+        res.json({
+            reply: data.choices?.[0]?.message?.content || "پاسخی دریافت نشد"
+        });
 
-} catch (error) {
-    console.log(error);
+    } catch (error) {
+        console.log(error);
 
-    res.status(500).json({
-        reply: "خطا در اتصال به OpenRouter"
-    });
-}
-```
-
+        res.status(500).json({
+            reply: "خطا در اتصال به OpenRouter"
+        });
+    }
 });
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-console.log(`AhmedAI Server Running On Port ${PORT}`);
+    console.log(`AhmedAI Server Running On Port ${PORT}`);
 });
