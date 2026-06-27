@@ -27,7 +27,9 @@ input.value = "";
 
 try {
 
-    const response = await fetch("https://YOUR-RENDER-LINK.onrender.com/chat", {
+    addMessage("AhmedAI: در حال فکر کردن...", "ai");
+
+    const response = await fetch("/chat", {
         method: "POST",
 
         headers: {
@@ -41,9 +43,13 @@ try {
 
     const data = await response.json();
 
+    messages.lastChild.remove();
+
     addMessage("AhmedAI: " + data.reply, "ai");
 
 } catch (error) {
+
+    messages.lastChild.remove();
 
     addMessage("خطا در اتصال به سرور", "ai");
 
@@ -61,4 +67,3 @@ e.preventDefault();
 sendMessage();
 }
 });
-
