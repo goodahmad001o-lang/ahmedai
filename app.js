@@ -18,7 +18,8 @@ async function sendMessage() {
 alert("تابع اجرا شد");
 
 ```
-const text = input.value.trim();
+const text = document.getElementById("userInput").value.trim();
+alert("متن وارد شده: " + text);
 
 if (!text) {
     alert("متنی وارد نشده");
