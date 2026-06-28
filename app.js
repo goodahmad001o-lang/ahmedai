@@ -29,7 +29,7 @@ input.value = "";
 try {
 
     addMessage("AhmedAI: در حال فکر کردن...", "ai");
-
+    alert("در حال ارسال به سرور");
     const response = await fetch("/chat", {
         method: "POST",
 
