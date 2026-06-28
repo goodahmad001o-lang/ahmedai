@@ -1,18 +1,22 @@
-alert("نسخه جدید app.js لود شد");
+alert("نسخه جدید لود شد");
 
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const messages = document.getElementById("messages");
 
-async function sendMessage() {
+sendBtn.addEventListener("click", function() {
+
+```
 alert("تابع اجرا شد");
 
-```
-const text = document.getElementById("userInput").value.trim();
+alert("input = " + input);
 
-alert("متن وارد شده: " + text);
-```
-
+if (!input) {
+    alert("input پیدا نشد");
+    return;
 }
 
-sendBtn.addEventListener("click", sendMessage);
+alert("مقدار داخل کادر: " + input.value);
+```
+
+});
