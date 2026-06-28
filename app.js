@@ -1,65 +1,18 @@
+alert("نسخه جدید app.js لود شد");
+
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const messages = document.getElementById("messages");
-
-function addMessage(text, type) {
-const div = document.createElement("div");
-div.className = type;
-div.innerText = text;
-
-```
-messages.appendChild(div);
-messages.scrollTop = messages.scrollHeight;
-```
-
-}
 
 async function sendMessage() {
 alert("تابع اجرا شد");
 
 ```
 const text = document.getElementById("userInput").value.trim();
+
 alert("متن وارد شده: " + text);
-
-if (!text) {
-    alert("متنی وارد نشده");
-    return;
-}
-
-addMessage("شما: " + text, "user");
-
-input.value = "";
-
-try {
-    alert("در حال ارسال به سرور");
-
-    const response = await fetch("/chat", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            message: text
-        })
-    });
-
-    const data = await response.json();
-
-    addMessage("AhmedAI: " + data.reply, "ai");
-
-} catch (error) {
-    console.log(error);
-    addMessage("خطا در اتصال به سرور", "ai");
-}
 ```
 
 }
 
 sendBtn.addEventListener("click", sendMessage);
-
-input.addEventListener("keydown", function(e) {
-if (e.key === "Enter") {
-e.preventDefault();
-sendMessage();
-}
-});
