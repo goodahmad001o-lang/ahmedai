@@ -60,7 +60,11 @@ try {
 
 }
 
-sendBtn.addEventListener("click", sendMessage);
+sendBtn.addEventListener("click", function() {
+alert("دکمه کار می‌کند");
+sendMessage();
+});
+
 
 input.addEventListener("keydown", function(e) {
 if (e.key === "Enter") {
