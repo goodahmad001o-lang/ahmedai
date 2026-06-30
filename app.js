@@ -1,22 +1,5 @@
-alert("نسخه جدید لود شد");
+alert("شروع");
 
-const input = document.getElementById("userInput");
-const sendBtn = document.getElementById("sendBtn");
-const messages = document.getElementById("messages");
-
-sendBtn.addEventListener("click", function() {
-
-```
-alert("تابع اجرا شد");
-
-alert("input = " + input);
-
-if (!input) {
-    alert("input پیدا نشد");
-    return;
-}
-
-alert("مقدار داخل کادر: " + input.value);
-```
-
-});
+document.getElementById("sendBtn").onclick = function () {
+alert(document.getElementById("userInput").value);
+};
