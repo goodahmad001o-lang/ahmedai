@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const fetch = require("node-fetch"); // اضافه شده برای اطمینان از کارکرد در Render
 
 const app = express();
 
@@ -11,6 +12,12 @@ const API_KEY = process.env.OPENROUTER_API_KEY;
 
 app.post("/chat", async (req, res) => {
     try {
+        const userMessage = req.body.message;
+
+        if (!API_KEY) {
+            return res.status(500).json({ reply: "خطا: API Key تنظیم نشده است." });
+        }
+
         const response = await fetch(
             "https://openrouter.ai/api/v1/chat/completions",
             {
@@ -30,7 +37,7 @@ app.post("/chat", async (req, res) => {
                         },
                         {
                             role: "user",
-                            content: req.body.message
+                            content: userMessage
                         }
                     ]
                 })
@@ -44,10 +51,9 @@ app.post("/chat", async (req, res) => {
         });
 
     } catch (error) {
-        console.log(error);
-
+        console.error("Server Error:", error);
         res.status(500).json({
-            reply: "خطا در اتصال به OpenRouter"
+            reply: "خطا در اتصال به هوش مصنوعی"
         });
     }
 });
