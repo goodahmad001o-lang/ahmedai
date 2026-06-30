@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
-require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,6 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
 
+// در Render، متغیرها مستقیماً از process.env خوانده می‌شوند
 const API_KEY = process.env.OPENROUTER_API_KEY;
 
 app.post("/chat", async (req, res) => {
@@ -44,13 +44,11 @@ app.post("/chat", async (req, res) => {
 
         const data = await response.json();
 
-        // بررسی اینکه آیا پاسخ از OpenRouter درست دریافت شده است
         if (data.choices && data.choices[0] && data.choices[0].message) {
             res.json({
                 reply: data.choices[0].message.content
             });
         } else {
-            // اگر API خطایی داده باشد، آن را در لاگ Render چاپ می‌کنیم
             console.error("API Error Response:", JSON.stringify(data));
             res.json({
                 reply: "متاسفم، پاسخی از هوش مصنوعی دریافت نشد. لطفاً دوباره تلاش کنید."
