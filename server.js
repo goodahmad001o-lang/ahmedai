@@ -46,9 +46,20 @@ app.post("/chat", async (req, res) => {
 
         const data = await response.json();
 
-        res.json({
-            reply: data.choices?.[0]?.message?.content || "پاسخی دریافت نشد"
-        });
+// این خط باعث می‌شود تمام پاسخ دریافتی در لاگ‌های Render چاپ شود
+console.log("Full API Response:", JSON.stringify(data));
+
+if (data.choices && data.choices[0] && data.choices[0].message) {
+    res.json({
+        reply: data.choices[0].message.content
+    });
+} else {
+    // اگر ساختار درست نبود، کل پاسخ را برای دیدن خطا در سایت نشان می‌دهد
+    res.json({
+        reply: "خطا در ساختار پاسخ: " + JSON.stringify(data)
+    });
+}
+        
 
     } catch (error) {
         console.error("Server Error:", error);
