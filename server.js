@@ -34,7 +34,7 @@ app.post("/chat", async (req, res) => {
                 "X-Title": "AhmedAI"
             },
             body: JSON.stringify({
-                model: "meta-llama/llama-3-8b-instruct:free",
+                model: "mistralai/mistral-small-3.1-24b-instruct:free",
                 messages: [
                     { role: "system", content: "Your name is AhmedAI. Answer in Persian." },
                     { role: "user", content: message }
