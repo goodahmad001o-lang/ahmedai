@@ -1,69 +1,65 @@
-const express = require('express');
-const cors = require('cors');
-const fetch = require('node-fetch');
+const express = require("express");
+const cors = require("cors");
+const fetch = require("node-fetch");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
 
-// در Render، متغیرها مستقیماً از process.env خوانده می‌شوند
-const API_KEY = process.env.OPENROUTER_API_KEY;
+const API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
+const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
 
 app.post("/chat", async (req, res) => {
-    const message = req.body.message;
-
-    if (!message) {
-        return res.status(400).json({ reply: "پیام خالی است." });
-    }
-
-    if (!API_KEY) {
-        console.error("خطا: API_KEY در Environment Variables تنظیم نشده است!");
-        return res.json({ reply: "خطا: تنظیمات سرور نامعتبر است." });
-    }
-
     try {
-        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${API_KEY}`,
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://ahmedai-gqs8.onrender.com",
-                "X-Title": "AhmedAI"
-            },
-            body: JSON.stringify({
-                model: "mistralai/mistral-small-3.1-24b-instruct:free",
-                messages: [
-                    { role: "system", content: "Your name is AhmedAI. Answer in Persian." },
-                    { role: "user", content: message }
-                ]
-            })
-        });
+        const response = await fetch(
+            `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/run/@cf/meta/llama-3-8b-instruct`,
+            {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${API_TOKEN}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    messages: [
+                        {
+                            role: "system",
+                            content: "You are AhmedAI. Always answer in Persian."
+                        },
+                        {
+                            role: "user",
+                            content: req.body.message
+                        }
+                    ]
+                })
+            }
+        );
 
         const data = await response.json();
-console.log("Status:", response.status);
-console.log("Response:", JSON.stringify(data, null, 2));
-        if (data.choices && data.choices[0] && data.choices[0].message) {
+
+        console.log(JSON.stringify(data, null, 2));
+
+        if (data.success && data.result && data.result.response) {
             res.json({
-                reply: data.choices[0].message.content
+                reply: data.result.response
             });
         } else {
-            console.error("API Error Response:", JSON.stringify(data));
             res.json({
-                reply: "متاسفم، پاسخی از هوش مصنوعی دریافت نشد. لطفاً دوباره تلاش کنید."
+                reply: "پاسخی دریافت نشد."
             });
         }
 
-    } catch (error) {
-        console.error("Server Error:", error);
+    } catch (err) {
+        console.error(err);
         res.json({
-            reply: "خطا در اتصال به سرور هوش مصنوعی."
+            reply: "خطا در اتصال به Cloudflare AI"
         });
     }
 });
 
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-    console.log(`AhmedAI Server Running On Port ${PORT}`);
+    console.log("AhmedAI Running On Port " + PORT);
 });
