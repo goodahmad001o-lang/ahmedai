@@ -1,22 +1,160 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhmedAI</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AhmedAI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    <div class="container">
-        <h1>AhmedAI</h1>
-        <div id="messages">
-            <div class="ai">سلام! من AhmedAI هستم. چطور می‌توانم کمک کنم؟</div>
-        </div>
-        <div class="input-area">
-            <input type="text" id="userInput" placeholder="پیام خود را بنویسید...">
-            <button id="sendBtn">ارسال</button>
-        </div>
-    </div>
-    <script src="app.js"></script>
+
+<div class="background"></div>
+
+<header class="topbar">
+
+<div class="logo">
+
+<div class="logo-circle">🤖</div>
+
+<div>
+
+<h2>AhmedAI</h2>
+
+<span>نسخه آزمایشی</span>
+
+</div>
+
+</div>
+
+<div class="top-buttons">
+
+<button>🌙</button>
+
+<button>⚙️</button>
+
+</div>
+
+</header>
+
+<main>
+
+<section class="welcome">
+
+<h1>سلام 👋</h1>
+
+<p>
+
+امروز چطور می‌توانم کمکت کنم؟
+
+</p>
+
+<div class="quick-buttons">
+
+<button>💻 برنامه نویسی</button>
+
+<button>🧠 یادگیری</button>
+
+<button>💰 کسب درآمد</button>
+
+<button>✈️ سفر</button>
+
+</div>
+
+</section>
+
+<section id="messages" class="messages">
+
+<div class="message ai">
+
+<div class="avatar">
+
+🤖
+
+</div>
+
+<div class="bubble">
+
+سلام!
+
+من AhmedAI هستم.
+
+هر سوالی داری بپرس 😊
+
+</div>
+
+</div>
+
+</section>
+
+<div id="typing" class="typing hidden">
+
+🤖
+
+درحال فکر کردن...
+
+</div>
+
+</main>
+
+<footer>
+
+<div class="chat-box">
+
+<button class="attach">
+
+📎
+
+</button>
+
+<input
+
+id="userInput"
+
+type="text"
+
+placeholder="پیام خود را بنویس..."
+
+autocomplete="off"
+
+>
+
+<button class="voice">
+
+🎤
+
+</button>
+
+<button
+
+id="sendBtn"
+
+class="send"
+
+>
+
+➜
+
+</button>
+
+</div>
+
+</footer>
+
+<script src="app.js"></script>
+
 </body>
+
 </html>
