@@ -79,3 +79,56 @@ input.addEventListener("keydown", function(e) {
     }
 
 });
+// تنظیمات
+
+const settingsBtn = document.getElementById("settingsBtn");
+
+const settingsModal = document.getElementById("settingsModal");
+
+const closeSettings = document.getElementById("closeSettings");
+
+const clearChat = document.getElementById("clearChat");
+
+const aboutBtn = document.getElementById("aboutBtn");
+
+settingsBtn.onclick = () => {
+
+settingsModal.classList.remove("hidden");
+
+};
+
+closeSettings.onclick = () => {
+
+settingsModal.classList.add("hidden");
+
+};
+
+clearChat.onclick = () => {
+
+messages.innerHTML = `
+
+<div class="message ai">
+
+<div class="avatar">🤖</div>
+
+<div class="bubble">
+
+سلام!
+
+من AhmedAI هستم 😊
+
+</div>
+
+</div>
+
+`;
+
+settingsModal.classList.add("hidden");
+
+};
+
+aboutBtn.onclick = () => {
+
+alert("AhmedAI\nنسخه 2.1\nساخته شده توسط Ahmad ❤️");
+
+};
