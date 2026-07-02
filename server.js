@@ -14,7 +14,7 @@ const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
 app.post("/chat", async (req, res) => {
     try {
         const response = await fetch(
-            `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/run/@cf/meta/llama-3-8b-instruct`,
+            `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/run/@cf/openai/gpt-oss-120b`,
             {
                 method: "POST",
                 headers: {
