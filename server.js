@@ -40,14 +40,21 @@ app.post("/chat", async (req, res) => {
 
         console.log(JSON.stringify(data, null, 2));
 
-        if (data.success && data.result && data.result.response) {
-            res.json({
-                reply: data.result.response
-            });
-        } else {
-            res.json({
-                reply: "پاسخی دریافت نشد."
-            });
+        if (
+    data.success &&
+    data.result &&
+    data.result.choices &&
+    data.result.choices.length > 0
+) {
+    res.json({
+        reply: data.result.choices[0].message.content
+    });
+} else {
+    console.log(data);
+
+    res.json({
+        reply: "پاسخی دریافت نشد."
+    });
         }
 
     } catch (err) {
