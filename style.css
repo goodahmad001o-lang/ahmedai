@@ -1,83 +1,321 @@
-/* ===== Home Screen ===== */
+/* =========================
+   AhmedAI V4 - STYLE
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Vazirmatn',sans-serif;
+    background:#0B1220;
+    color:#fff;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+/* Background */
+.background{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+        radial-gradient(circle at top left,#2563EB33,transparent),
+        radial-gradient(circle at bottom right,#7C3AED33,transparent),
+        #0B1220;
+    z-index:-1;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+    height:70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+    background:rgba(255,255,255,0.04);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-circle{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563EB,#7C3AED);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+}
+
+.logo h2{
+    font-size:18px;
+    font-weight:800;
+}
+
+.logo span{
+    font-size:12px;
+    opacity:0.6;
+}
+
+/* =========================
+   ICON BUTTONS
+========================= */
+
+.top-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.icon-btn{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:#111827;
+    border:1px solid rgba(255,255,255,0.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:0.2s;
+    color:white;
+}
+
+.icon-btn:hover{
+    background:#2563EB;
+    transform:translateY(-2px);
+}
+
+/* =========================
+   HOME SCREEN
+========================= */
 
 .home-screen{
-
-flex:1;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
-
-animation:fade .6s;
-
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
 .big-logo{
-
-width:120px;
-
-height:120px;
-
-border-radius:50%;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:60px;
-
-margin-bottom:25px;
-
-background:linear-gradient(135deg,#2563EB,#7C3AED);
-
-box-shadow:0 0 40px rgba(37,99,235,.45);
-
-animation:float 3s ease-in-out infinite;
-
+    width:110px;
+    height:110px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#2563EB,#7C3AED);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:50px;
+    margin-bottom:20px;
+    box-shadow:0 0 40px rgba(37,99,235,0.3);
+    animation:float 3s ease-in-out infinite;
 }
 
 .home-screen h1{
-
-font-size:42px;
-
-font-weight:800;
-
-margin-bottom:12px;
-
+    font-size:40px;
+    font-weight:900;
 }
 
 .home-screen p{
-
-font-size:18px;
-
-opacity:.75;
-
-}@keyframes float{
-
-0%{
-
-transform:translateY(0px);
-
+    opacity:0.7;
+    margin-top:10px;
 }
 
-50%{
+/* =========================
+   CHAT
+========================= */
 
-transform:translateY(-10px);
-
+.messages{
+    flex:1;
+    overflow-y:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
 }
 
-100%{
-
-transform:translateY(0px);
-
+.message{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
 }
 
+.avatar{
+    width:40px;
+    height:40px;
+    border-radius:10px;
+    background:#2563EB;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+.bubble{
+    background:rgba(255,255,255,0.06);
+    padding:12px;
+    border-radius:12px;
+    max-width:70%;
+    line-height:1.6;
+}
+
+/* user */
+.user{
+    flex-direction:row-reverse;
+}
+
+.user .avatar{
+    background:#10B981;
+}
+
+.user .bubble{
+    background:#2563EB;
+}
+
+/* typing */
+.typing{
+    padding:10px 20px;
+    opacity:0.7;
+}
+
+.hidden{
+    display:none;
+}
+
+/* =========================
+   FOOTER INPUT
+========================= */
+
+footer{
+    padding:15px;
+    background:rgba(255,255,255,0.04);
+    backdrop-filter:blur(18px);
+}
+
+.chat-box{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    background:#111827;
+    padding:10px;
+    border-radius:15px;
+}
+
+.chat-box input{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:white;
+}
+
+.chat-box button{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:10px;
+    background:#1E293B;
+    color:white;
+    cursor:pointer;
+}
+
+/* send */
+.send{
+    background:linear-gradient(135deg,#2563EB,#7C3AED);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    position:fixed;
+    right:0;
+    top:0;
+    width:240px;
+    height:100%;
+    background:#0F172A;
+    border-left:1px solid rgba(255,255,255,0.08);
+    padding:20px;
+    transition:0.3s;
+}
+
+.sidebar.hidden{
+    transform:translateX(100%);
+}
+
+.sidebar ul{
+    list-style:none;
+    margin-top:20px;
+}
+
+.sidebar li{
+    padding:10px;
+    margin-bottom:10px;
+    background:#111827;
+    border-radius:10px;
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+/* =========================
+   MODALS
+========================= */
+
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal-box{
+    width:300px;
+    background:#111827;
+    padding:20px;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.modal-box button{
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#1E293B;
+    color:white;
+    cursor:pointer;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0);}
 }
