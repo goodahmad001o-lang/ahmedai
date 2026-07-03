@@ -1,187 +1,89 @@
-// ===============================
-// AhmedAI V4 - app.js
-// ===============================
 
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const messages = document.getElementById("messages");
 const typing = document.getElementById("typing");
 
-const homeScreen = document.getElementById("homeScreen");
-
 const settingsBtn = document.getElementById("settingsBtn");
 const settingsModal = document.getElementById("settingsModal");
 const closeSettings = document.getElementById("closeSettings");
-
 const clearChat = document.getElementById("clearChat");
-
 const aboutBtn = document.getElementById("aboutBtn");
-const aboutModal = document.getElementById("aboutModal");
-const closeAbout = document.getElementById("closeAbout");
 
-const themeBtn = document.getElementById("themeBtn");
-
-const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
-
-// ===============================
-// ساخت پیام
-// ===============================
+const menuBtn = document.getElementById("menuBtn");
 
 function addMessage(text, sender){
 
-    const msg = document.createElement("div");
-    msg.className = "message " + sender;
+const msg = document.createElement("div");
+msg.className = sender;
 
-    const avatar = document.createElement("div");
-    avatar.className = "avatar";
-    avatar.textContent = sender === "user" ? "U" : "AI";
+msg.innerHTML = `
+<div class="bubble">${text}</div>
+`;
 
-    const bubble = document.createElement("div");
-    bubble.className = "bubble";
-    bubble.textContent = text;
+messages.appendChild(msg);
+messages.scrollTop = messages.scrollHeight;
 
-    msg.appendChild(avatar);
-    msg.appendChild(bubble);
-
-    messages.appendChild(msg);
-
-    messages.scrollTop = messages.scrollHeight;
 }
-
-// ===============================
-// ارسال پیام
-// ===============================
 
 async function sendMessage(){
 
-    const text = input.value.trim();
+const text = input.value.trim();
+if(!text) return;
 
-    if(text === "") return;
+addMessage(text,"user");
+input.value = "";
+typing.classList.remove("hidden");
 
-    homeScreen.style.display = "none";
+try{
 
-    addMessage(text, "user");
-
-    input.value = "";
-
-    typing.classList.remove("hidden");
-
-    try{
-
-        const res = await fetch("/chat",{
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body:JSON.stringify({
-                message:text
-            })
-
-        });
-
-        const data = await res.json();
-
-        typing.classList.add("hidden");
-
-        addMessage(data.reply, "ai");
-
-    }catch(err){
-
-        typing.classList.add("hidden");
-
-        addMessage("❌ خطا در ارتباط با سرور", "ai");
-
-    }
-}
-
-// ===============================
-// ارسال پیام با دکمه و Enter
-// ===============================
-
-sendBtn.addEventListener("click", sendMessage);
-
-input.addEventListener("keydown", (e)=>{
-
-    if(e.key === "Enter") sendMessage();
-
+const res = await fetch("/chat",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({message:text})
 });
 
-// ===============================
-// تنظیمات
-// ===============================
+const data = await res.json();
 
-settingsBtn.onclick = ()=>{
+typing.classList.add("hidden");
+addMessage(data.reply,"ai");
 
-    settingsModal.classList.remove("hidden");
+}catch(err){
 
-};
+typing.classList.add("hidden");
+addMessage("خطا در اتصال","ai");
 
-closeSettings.onclick = ()=>{
+}
 
-    settingsModal.classList.add("hidden");
+}
 
-};
+/* events */
+sendBtn.onclick = sendMessage;
 
-// ===============================
-// سایدبار
-// ===============================
+input.addEventListener("keydown",(e)=>{
+if(e.key==="Enter") sendMessage();
+});
 
-menuBtn.onclick = ()=>{
-
-    sidebar.classList.toggle("hidden");
-
-};
-
-// ===============================
-// درباره
-// ===============================
-
-aboutBtn.onclick = ()=>{
-
-    aboutModal.classList.remove("hidden");
-
-};
-
-closeAbout.onclick = ()=>{
-
-    aboutModal.classList.add("hidden");
-
-};
-
-// ===============================
-// پاک کردن چت
-// ===============================
+/* settings */
+settingsBtn.onclick = ()=>settingsModal.classList.remove("hidden");
+closeSettings.onclick = ()=>settingsModal.classList.add("hidden");
 
 clearChat.onclick = ()=>{
-
-    messages.innerHTML = "";
-
-    homeScreen.style.display = "flex";
-
-    settingsModal.classList.add("hidden");
-
+messages.innerHTML="";
+settingsModal.classList.add("hidden");
 };
 
-// ===============================
-// دارک مود ساده
-// ===============================
-
-themeBtn.onclick = ()=>{
-
-    document.body.classList.toggle("light");
-
+aboutBtn.onclick = ()=>{
+alert("AhmedAI V4 - Mobile First");
 };
 
-// ===============================
-// Lucide Icons
-// ===============================
-
-window.onload = ()=>{
-
-    lucide.createIcons();
-
+/* sidebar */
+menuBtn.onclick = ()=>{
+sidebar.classList.toggle("hidden");
 };
+
+/* icons */
+window.onload = ()=>lucide.createIcons();
