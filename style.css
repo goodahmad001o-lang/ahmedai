@@ -1,4 +1,3 @@
-
 *{
 margin:0;
 padding:0;
@@ -13,12 +12,6 @@ height:100vh;
 overflow:hidden;
 }
 
-.app{
-display:flex;
-flex-direction:column;
-height:100vh;
-}
-
 /* TOPBAR */
 .topbar{
 display:flex;
@@ -26,10 +19,6 @@ justify-content:space-between;
 padding:15px;
 background:rgba(255,255,255,0.04);
 backdrop-filter:blur(15px);
-}
-
-.brand{
-font-weight:700;
 }
 
 .icon-btn{
@@ -53,7 +42,6 @@ font-size:22px;
 
 .hero p{
 opacity:0.7;
-margin-top:5px;
 }
 
 .cards{
@@ -61,13 +49,13 @@ display:grid;
 grid-template-columns:1fr 1fr;
 gap:10px;
 margin-top:15px;
+padding:10px;
 }
 
 .card{
 background:#111827;
 padding:15px;
 border-radius:12px;
-font-size:14px;
 }
 
 /* CHAT */
@@ -86,10 +74,11 @@ gap:10px;
 .typing{
 font-size:12px;
 opacity:0.6;
+margin-top:5px;
 }
 
 .hidden{
-display:none;
+display:none !important;
 }
 
 /* INPUT */
@@ -109,7 +98,7 @@ background:#111827;
 color:white;
 }
 
-.send{
+.input-area button{
 width:45px;
 background:#2563EB;
 border:none;
@@ -125,9 +114,9 @@ left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.6);
-display:flex;
 justify-content:center;
 align-items:center;
+display:flex;
 }
 
 .box{
@@ -135,6 +124,9 @@ background:#111827;
 padding:20px;
 border-radius:15px;
 width:250px;
+display:flex;
+flex-direction:column;
+gap:10px;
 }
 
 /* SIDEBAR */
