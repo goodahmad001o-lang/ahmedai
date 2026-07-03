@@ -1,4 +1,3 @@
-
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const messages = document.getElementById("messages");
@@ -7,6 +6,7 @@ const typing = document.getElementById("typing");
 const settingsBtn = document.getElementById("settingsBtn");
 const settingsModal = document.getElementById("settingsModal");
 const closeSettings = document.getElementById("closeSettings");
+
 const clearChat = document.getElementById("clearChat");
 const aboutBtn = document.getElementById("aboutBtn");
 
@@ -15,14 +15,11 @@ const menuBtn = document.getElementById("menuBtn");
 
 function addMessage(text, sender){
 
-const msg = document.createElement("div");
-msg.className = sender;
+const div = document.createElement("div");
+div.textContent = text;
+div.className = sender;
 
-msg.innerHTML = `
-<div class="bubble">${text}</div>
-`;
-
-messages.appendChild(msg);
+messages.appendChild(div);
 messages.scrollTop = messages.scrollHeight;
 
 }
@@ -34,15 +31,14 @@ if(!text) return;
 
 addMessage(text,"user");
 input.value = "";
+
 typing.classList.remove("hidden");
 
 try{
 
 const res = await fetch("/chat",{
 method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
+headers:{"Content-Type":"application/json"},
 body:JSON.stringify({message:text})
 });
 
@@ -54,7 +50,7 @@ addMessage(data.reply,"ai");
 }catch(err){
 
 typing.classList.add("hidden");
-addMessage("خطا در اتصال","ai");
+addMessage("خطا در ارتباط","ai");
 
 }
 
@@ -71,36 +67,19 @@ if(e.key==="Enter") sendMessage();
 settingsBtn.onclick = ()=>settingsModal.classList.remove("hidden");
 closeSettings.onclick = ()=>settingsModal.classList.add("hidden");
 
+/* sidebar */
+menuBtn.onclick = ()=>sidebar.classList.toggle("hidden");
+
+/* clear chat */
 clearChat.onclick = ()=>{
 messages.innerHTML="";
 settingsModal.classList.add("hidden");
 };
 
+/* about */
 aboutBtn.onclick = ()=>{
-alert("AhmedAI V4 - Mobile First");
+alert("AhmedAI V4 - Stable Version");
 };
 
-/* sidebar */
-menuBtn.onclick = ()=>{
-sidebar.classList.toggle("hidden");
-};
-const settingsBtn = document.getElementById("settingsBtn");
-const settingsModal = document.getElementById("settingsModal");
-const closeSettings = document.getElementById("closeSettings");
-
-settingsBtn.addEventListener("click", ()=>{
-    settingsModal.classList.remove("hidden");
-});
-
-closeSettings.addEventListener("click", ()=>{
-    settingsModal.classList.add("hidden");
-});
-
-// کلیک بیرون برای بستن
-settingsModal.addEventListener("click", (e)=>{
-    if(e.target === settingsModal){
-        settingsModal.classList.add("hidden");
-    }
-});
 /* icons */
 window.onload = ()=>lucide.createIcons();
