@@ -1,134 +1,245 @@
+
+// ===============================
+// AhmedAI V3 - app.js (Part 1)
+// ===============================
+
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const messages = document.getElementById("messages");
 const typing = document.getElementById("typing");
 
-function addMessage(text, sender) {
+const homeScreen = document.getElementById("homeScreen");
 
-    const message = document.createElement("div");
-    message.className = "message " + sender;
+const settingsBtn = document.getElementById("settingsBtn");
+const settingsModal = document.getElementById("settingsModal");
+const closeSettings = document.getElementById("closeSettings");
 
-    const avatar = document.createElement("div");
-    avatar.className = "avatar";
-    avatar.textContent = sender === "user" ? "🧑" : "🤖";
+const clearChat = document.getElementById("clearChat");
 
-    const bubble = document.createElement("div");
-    bubble.className = "bubble";
-    bubble.textContent = text;
+const aboutBtn = document.getElementById("aboutBtn");
+const aboutModal = document.getElementById("aboutModal");
+const closeAbout = document.getElementById("closeAbout");
+
+const themeBtn = document.getElementById("themeBtn");
+const themeSwitch = document.getElementById("themeSwitch");
+
+// ===============================
+// ساخت پیام
+// ===============================
+
+function addMessage(text, sender){
+
+    const message=document.createElement("div");
+    message.className="message "+sender;
+
+    const avatar=document.createElement("div");
+    avatar.className="avatar";
+    avatar.textContent=(sender==="user")?"🧑":"🤖";
+
+    const bubble=document.createElement("div");
+    bubble.className="bubble";
+    bubble.textContent=text;
 
     message.appendChild(avatar);
     message.appendChild(bubble);
 
     messages.appendChild(message);
 
-    messages.scrollTop = messages.scrollHeight;
+    messages.scrollTop=messages.scrollHeight;
 }
 
-async function sendMessage() {
+// ===============================
+// ارسال پیام
+// ===============================
 
-    const text = input.value.trim();
+async function sendMessage(){
 
-    if (text === "") return;
+    const text=input.value.trim();
 
-    addMessage(text, "user");
+    if(text==="") return;
 
-    input.value = "";
+    homeScreen.style.display="none";
+
+    addMessage(text,"user");
+
+    input.value="";
 
     typing.classList.remove("hidden");
 
-    try {
+    try{
 
-        const response = await fetch("/chat", {
+        const response=await fetch("/chat",{
 
-            method: "POST",
+            method:"POST",
 
-            headers: {
-                "Content-Type": "application/json"
+            headers:{
+                "Content-Type":"application/json"
             },
 
-            body: JSON.stringify({
-                message: text
+            body:JSON.stringify({
+                message:text
             })
 
         });
 
-        const data = await response.json();
+        const data=await response.json();
 
         typing.classList.add("hidden");
 
-        addMessage(data.reply, "ai");
+        addMessage(data.reply,"ai");
 
-    } catch (err) {
+    }catch(err){
 
         typing.classList.add("hidden");
 
-        addMessage("❌ خطا در ارتباط با سرور.", "ai");
+        addMessage("❌ خطا در ارتباط با سرور","ai");
 
     }
 
 }
 
-sendBtn.addEventListener("click", sendMessage);
+// ===============================
+// رویدادها
+// ===============================
 
-input.addEventListener("keydown", function(e) {
+sendBtn.addEventListener("click",sendMessage);
 
-    if (e.key === "Enter") {
+input.addEventListener("keydown",function(e){
+
+    if(e.key==="Enter"){
 
         sendMessage();
 
     }
 
-});
+});// ===============================
 // تنظیمات
+// ===============================
 
-const settingsBtn = document.getElementById("settingsBtn");
+settingsBtn.addEventListener("click",()=>{
 
-const settingsModal = document.getElementById("settingsModal");
+    settingsModal.classList.remove("hidden");
 
-const closeSettings = document.getElementById("closeSettings");
+});
 
-const clearChat = document.getElementById("clearChat");
+closeSettings.addEventListener("click",()=>{
 
-const aboutBtn = document.getElementById("aboutBtn");
+    settingsModal.classList.add("hidden");
 
-settingsBtn.onclick = () => {
+});
 
-settingsModal.classList.remove("hidden");
+// بستن تنظیمات با کلیک روی پس‌زمینه
 
-};
+settingsModal.addEventListener("click",(e)=>{
 
-closeSettings.onclick = () => {
+    if(e.target===settingsModal){
 
-settingsModal.classList.add("hidden");
+        settingsModal.classList.add("hidden");
 
-};
+    }
 
-clearChat.onclick = () => {
+});
 
-messages.innerHTML = `
+// ===============================
+// درباره AhmedAI
+// ===============================
 
-<div class="message ai">
+aboutBtn.addEventListener("click",()=>{
 
-<div class="avatar">🤖</div>
+    settingsModal.classList.add("hidden");
 
-<div class="bubble">
+    aboutModal.classList.remove("hidden");
 
-سلام!
+});
 
-من AhmedAI هستم 😊
+closeAbout.addEventListener("click",()=>{
 
-</div>
+    aboutModal.classList.add("hidden");
 
-</div>
+});
 
-`;
+aboutModal.addEventListener("click",(e)=>{
 
-settingsModal.classList.add("hidden");
+    if(e.target===aboutModal){
 
-};
+        aboutModal.classList.add("hidden");
 
-aboutBtn.onclick = () => {
+    }
 
-alert("AhmedAI\nنسخه 2.1\nساخته شده توسط Ahmad ❤️");
+});
 
-};
+// ===============================
+// پاک کردن گفتگو
+// ===============================
+
+clearChat.addEventListener("click",()=>{
+
+    messages.innerHTML="";
+
+    homeScreen.style.display="flex";
+
+    settingsModal.classList.add("hidden");
+
+});
+
+// ===============================
+// دارک / لایت مود
+// ===============================
+
+function toggleTheme(){
+
+    document.body.classList.toggle("light");
+
+    if(document.body.classList.contains("light")){
+
+        localStorage.setItem("theme","light");
+
+        themeBtn.textContent="☀️";
+
+        themeSwitch.textContent="☀️ حالت روز";
+
+    }else{
+
+        localStorage.setItem("theme","dark");
+
+        themeBtn.textContent="🌙";
+
+        themeSwitch.textContent="🌙 حالت شب";
+
+    }
+
+}
+
+themeBtn.addEventListener("click",toggleTheme);
+
+themeSwitch.addEventListener("click",()=>{
+
+    toggleTheme();
+
+    settingsModal.classList.add("hidden");
+
+});
+
+// ===============================
+// بارگذاری تنظیمات ذخیره شده
+// ===============================
+
+window.addEventListener("load",()=>{
+
+    const savedTheme=localStorage.getItem("theme");
+
+    if(savedTheme==="light"){
+
+        document.body.classList.add("light");
+
+        themeBtn.textContent="☀️";
+
+        themeSwitch.textContent="☀️ حالت روز";
+
+    }
+
+});
+
+// ===============================
+// پایان فایل
+// ===============================
