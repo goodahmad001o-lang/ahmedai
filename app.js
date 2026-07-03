@@ -84,6 +84,23 @@ alert("AhmedAI V4 - Mobile First");
 menuBtn.onclick = ()=>{
 sidebar.classList.toggle("hidden");
 };
+const settingsBtn = document.getElementById("settingsBtn");
+const settingsModal = document.getElementById("settingsModal");
+const closeSettings = document.getElementById("closeSettings");
 
+settingsBtn.addEventListener("click", ()=>{
+    settingsModal.classList.remove("hidden");
+});
+
+closeSettings.addEventListener("click", ()=>{
+    settingsModal.classList.add("hidden");
+});
+
+// کلیک بیرون برای بستن
+settingsModal.addEventListener("click", (e)=>{
+    if(e.target === settingsModal){
+        settingsModal.classList.add("hidden");
+    }
+});
 /* icons */
 window.onload = ()=>lucide.createIcons();
