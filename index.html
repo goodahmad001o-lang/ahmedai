@@ -2,26 +2,23 @@
 <html lang="fa" dir="rtl">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AhmedAI</title>
 
-<meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
-<title>AhmedAI</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="background"></div>
+
+<!-- Header -->
 
 <header class="topbar">
 
@@ -33,119 +30,71 @@
 
 <h2>AhmedAI</h2>
 
-<span>نسخه آزمایشی</span>
+<span>AI Assistant</span>
 
 </div>
 
 </div>
 
 <div class="top-buttons">
+
 <button id="themeBtn">🌙</button>
 
 <button id="settingsBtn">⚙️</button>
-<button>🌙</button>
-
-<button>⚙️</button>
 
 </div>
 
 </header>
 
+<!-- Main -->
+
 <main>
 
-<section class="welcome">
+<div class="home-screen" id="homeScreen">
 
-<h1>سلام 👋</h1>
+<div class="big-logo">
+
+🤖
+
+</div>
+
+<h1>AhmedAI</h1>
 
 <p>
 
-امروز چطور می‌توانم کمکت کنم؟
+امروز چه کمکی از دستم برمیاد؟
 
 </p>
 
-<div class="quick-buttons">
-
-<button>💻 برنامه نویسی</button>
-
-<button>🧠 یادگیری</button>
-
-<button>💰 کسب درآمد</button>
-
-<button>✈️ سفر</button>
-
 </div>
 
-</section>
-
-<section id="messages" class="messages">
-
-<div class="message ai">
-
-<div class="avatar">
-
-🤖
-
-</div>
-
-<div class="bubble">
-
-سلام!
-
-من AhmedAI هستم.
-
-هر سوالی داری بپرس 😊
-
-</div>
-
-</div>
-
-</section>
+<section id="messages" class="messages"></section>
 
 <div id="typing" class="typing hidden">
 
-🤖
-
-درحال فکر کردن...
+🤖 درحال فکر کردن...
 
 </div>
 
 </main>
 
+<!-- Footer -->
+
 <footer>
 
 <div class="chat-box">
 
-<button class="attach">
-
-📎
-
-</button>
+<button class="attach">📎</button>
 
 <input
-
 id="userInput"
-
 type="text"
-
 placeholder="پیام خود را بنویس..."
+autocomplete="off">
 
-autocomplete="off"
+<button class="voice">🎤</button>
 
->
-
-<button class="voice">
-
-🎤
-
-</button>
-
-<button
-
-id="sendBtn"
-
-class="send"
-
->
+<button id="sendBtn" class="send">
 
 ➜
 
@@ -154,21 +103,79 @@ class="send"
 </div>
 
 </footer>
+
+<!-- Settings -->
+
 <div id="settingsModal" class="hidden">
 
 <div class="settings-box">
 
 <h2>⚙️ تنظیمات</h2>
 
-<button id="clearChat">🗑 پاک کردن گفتگو</button>
+<button id="themeSwitch">
 
-<button id="aboutBtn">📜 درباره AhmedAI</button>
+🌙 تغییر حالت شب
 
-<button id="closeSettings">❌ بستن</button>
+</button>
+
+<button id="clearChat">
+
+🗑 پاک کردن گفتگو
+
+</button>
+
+<button id="aboutBtn">
+
+📜 درباره AhmedAI
+
+</button>
+
+<button id="closeSettings">
+
+❌ بستن
+
+</button>
 
 </div>
 
 </div>
+
+<!-- About -->
+
+<div id="aboutModal" class="hidden">
+
+<div class="about-box">
+
+<h2>🤖 AhmedAI</h2>
+
+<p>
+
+نسخه 3.0
+
+</p>
+
+<p>
+
+ساخته شده توسط احمد ❤️
+
+</p>
+
+<p>
+
+قدرت گرفته از Cloudflare AI
+
+</p>
+
+<button id="closeAbout">
+
+بستن
+
+</button>
+
+</div>
+
+</div>
+
 <script src="app.js"></script>
 
 </body>
