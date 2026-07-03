@@ -9,13 +9,94 @@
 }
 
 body{
-    font-family:'Vazirmatn',sans-serif;
-    background:#0B1220;
-    color:#fff;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
+  margin:0;
+  font-family:Vazirmatn;
+  background:#0B1220;
+  color:white;
+}
+
+/* TOPBAR */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 20px;
+  background:rgba(255,255,255,0.04);
+  backdrop-filter:blur(20px);
+}
+
+.brand{
+  font-weight:800;
+  font-size:18px;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  margin-top:40px;
+}
+
+.hero h1{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  opacity:0.7;
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  padding:20px;
+  margin-top:20px;
+}
+
+.card{
+  background:#111827;
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.card:hover{
+  background:#2563EB;
+  transform:translateY(-3px);
+}
+
+/* CHAT */
+.chat{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:rgba(255,255,255,0.04);
+  backdrop-filter:blur(20px);
+  padding:10px;
+}
+
+.input-box{
+  display:flex;
+  gap:10px;
+}
+
+.input-box input{
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#111827;
+  color:white;
+}
+
+.input-box button{
+  width:45px;
+  border:none;
+  border-radius:10px;
+  background:#2563EB;
+  color:white;
 }
 
 /* Background */
