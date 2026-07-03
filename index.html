@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AhmedAI</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,166 +19,125 @@
 
 <div class="background"></div>
 
-<!-- Header -->
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar hidden">
 
+    <h3>AhmedAI</h3>
+
+    <ul>
+        <li><i data-lucide="message-circle"></i> چت‌ها</li>
+        <li><i data-lucide="brain"></i> حافظه</li>
+        <li><i data-lucide="star"></i> اشتراک</li>
+        <li><i data-lucide="user"></i> حساب</li>
+        <li><i data-lucide="settings"></i> تنظیمات</li>
+    </ul>
+
+</div>
+
+<!-- Header -->
 <header class="topbar">
 
-<div class="logo">
+    <div class="logo">
+        <div class="logo-circle">🤖</div>
+        <div>
+            <h2>AhmedAI</h2>
+            <span>AI Assistant</span>
+        </div>
+    </div>
 
-<div class="logo-circle">🤖</div>
+    <div class="top-buttons">
 
-<div>
+        <button class="icon-btn" id="themeBtn">
+            <i data-lucide="moon"></i>
+        </button>
 
-<h2>AhmedAI</h2>
+        <button class="icon-btn" id="settingsBtn">
+            <i data-lucide="settings"></i>
+        </button>
 
-<span>AI Assistant</span>
+        <button class="icon-btn" id="menuBtn">
+            <i data-lucide="menu"></i>
+        </button>
 
-</div>
-
-</div>
-
-<div class="top-buttons">
-
-<button id="themeBtn">🌙</button>
-
-<button id="settingsBtn">⚙️</button>
-
-</div>
+    </div>
 
 </header>
 
 <!-- Main -->
-
 <main>
 
-<div class="home-screen" id="homeScreen">
+    <div class="home-screen" id="homeScreen">
 
-<div class="big-logo">
+        <div class="big-logo">🤖</div>
 
-🤖
+        <h1>AhmedAI</h1>
 
-</div>
+        <p>امروز چه کمکی از دستم برمیاد؟</p>
 
-<h1>AhmedAI</h1>
+    </div>
 
-<p>
+    <section id="messages" class="messages"></section>
 
-امروز چه کمکی از دستم برمیاد؟
-
-</p>
-
-</div>
-
-<section id="messages" class="messages"></section>
-
-<div id="typing" class="typing hidden">
-
-🤖 درحال فکر کردن...
-
-</div>
+    <div id="typing" class="typing hidden">
+        🤖 درحال فکر کردن...
+    </div>
 
 </main>
 
 <!-- Footer -->
-
 <footer>
 
-<div class="chat-box">
+    <div class="chat-box">
 
-<button class="attach">📎</button>
+        <button class="attach">📎</button>
 
-<input
-id="userInput"
-type="text"
-placeholder="پیام خود را بنویس..."
-autocomplete="off">
+        <input id="userInput" type="text" placeholder="پیام خود را بنویس...">
 
-<button class="voice">🎤</button>
+        <button class="voice">🎤</button>
 
-<button id="sendBtn" class="send">
+        <button id="sendBtn" class="send">➜</button>
 
-➜
-
-</button>
-
-</div>
+    </div>
 
 </footer>
 
 <!-- Settings -->
+<div id="settingsModal" class="modal hidden">
 
-<div id="settingsModal" class="hidden">
+    <div class="modal-box">
 
-<div class="settings-box">
+        <h2>⚙️ تنظیمات</h2>
 
-<h2>⚙️ تنظیمات</h2>
+        <button id="themeSwitch">🌙 تغییر حالت</button>
 
-<button id="themeSwitch">
+        <button id="clearChat">🗑 پاک کردن گفتگو</button>
 
-🌙 تغییر حالت شب
+        <button id="aboutBtn">📜 درباره</button>
 
-</button>
+        <button id="closeSettings">❌ بستن</button>
 
-<button id="clearChat">
-
-🗑 پاک کردن گفتگو
-
-</button>
-
-<button id="aboutBtn">
-
-📜 درباره AhmedAI
-
-</button>
-
-<button id="closeSettings">
-
-❌ بستن
-
-</button>
-
-</div>
+    </div>
 
 </div>
 
 <!-- About -->
+<div id="aboutModal" class="modal hidden">
 
-<div id="aboutModal" class="hidden">
+    <div class="modal-box">
 
-<div class="about-box">
+        <h2>AhmedAI</h2>
 
-<h2>🤖 AhmedAI</h2>
+        <p>نسخه 4.0</p>
 
-<p>
+        <p>ساخته شده توسط Ahmad ❤️</p>
 
-نسخه 3.0
+        <button id="closeAbout">بستن</button>
 
-</p>
-
-<p>
-
-ساخته شده توسط احمد ❤️
-
-</p>
-
-<p>
-
-قدرت گرفته از Cloudflare AI
-
-</p>
-
-<button id="closeAbout">
-
-بستن
-
-</button>
-
-</div>
+    </div>
 
 </div>
 
 <script src="app.js"></script>
 
 </body>
-
 </html>
