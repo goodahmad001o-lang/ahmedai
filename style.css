@@ -1,402 +1,154 @@
-/* =========================
-   AhmedAI V4 - STYLE
-========================= */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Vazirmatn;
 }
 
 body{
-  margin:0;
-  font-family:Vazirmatn;
-  background:#0B1220;
-  color:white;
+background:#0B1220;
+color:white;
+height:100vh;
+overflow:hidden;
+}
+
+.app{
+display:flex;
+flex-direction:column;
+height:100vh;
 }
 
 /* TOPBAR */
 .topbar{
-  display:flex;
-  justify-content:space-between;
-  padding:15px 20px;
-  background:rgba(255,255,255,0.04);
-  backdrop-filter:blur(20px);
+display:flex;
+justify-content:space-between;
+padding:15px;
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(15px);
 }
 
 .brand{
-  font-weight:800;
-  font-size:18px;
+font-weight:700;
+}
+
+.icon-btn{
+width:40px;
+height:40px;
+border:none;
+border-radius:10px;
+background:#111827;
+color:white;
 }
 
 /* HERO */
 .hero{
-  text-align:center;
-  margin-top:40px;
+text-align:center;
+padding:20px;
 }
 
 .hero h1{
-  font-size:32px;
-  margin-bottom:10px;
+font-size:22px;
 }
 
 .hero p{
-  opacity:0.7;
+opacity:0.7;
+margin-top:5px;
 }
 
-/* CARDS */
 .cards{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  padding:20px;
-  margin-top:20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:15px;
 }
 
 .card{
-  background:#111827;
-  padding:20px;
-  border-radius:15px;
-  text-align:center;
-  cursor:pointer;
-  transition:0.2s;
-}
-
-.card:hover{
-  background:#2563EB;
-  transform:translateY(-3px);
+background:#111827;
+padding:15px;
+border-radius:12px;
+font-size:14px;
 }
 
 /* CHAT */
 .chat{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:rgba(255,255,255,0.04);
-  backdrop-filter:blur(20px);
-  padding:10px;
+flex:1;
+overflow-y:auto;
+padding:10px;
 }
-
-.input-box{
-  display:flex;
-  gap:10px;
-}
-
-.input-box input{
-  flex:1;
-  padding:12px;
-  border:none;
-  border-radius:10px;
-  background:#111827;
-  color:white;
-}
-
-.input-box button{
-  width:45px;
-  border:none;
-  border-radius:10px;
-  background:#2563EB;
-  color:white;
-}
-
-/* Background */
-.background{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:
-        radial-gradient(circle at top left,#2563EB33,transparent),
-        radial-gradient(circle at bottom right,#7C3AED33,transparent),
-        #0B1220;
-    z-index:-1;
-}
-
-/* =========================
-   TOP BAR
-========================= */
-
-.topbar{
-    height:70px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 20px;
-    background:rgba(255,255,255,0.04);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.logo-circle{
-    width:45px;
-    height:45px;
-    border-radius:12px;
-    background:linear-gradient(135deg,#2563EB,#7C3AED);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:22px;
-}
-
-.logo h2{
-    font-size:18px;
-    font-weight:800;
-}
-
-.logo span{
-    font-size:12px;
-    opacity:0.6;
-}
-
-/* =========================
-   ICON BUTTONS
-========================= */
-
-.top-buttons{
-    display:flex;
-    gap:10px;
-}
-
-.icon-btn{
-    width:42px;
-    height:42px;
-    border-radius:12px;
-    background:#111827;
-    border:1px solid rgba(255,255,255,0.08);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:0.2s;
-    color:white;
-}
-
-.icon-btn:hover{
-    background:#2563EB;
-    transform:translateY(-2px);
-}
-
-/* =========================
-   HOME SCREEN
-========================= */
-
-.home-screen{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-.big-logo{
-    width:110px;
-    height:110px;
-    border-radius:25px;
-    background:linear-gradient(135deg,#2563EB,#7C3AED);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:50px;
-    margin-bottom:20px;
-    box-shadow:0 0 40px rgba(37,99,235,0.3);
-    animation:float 3s ease-in-out infinite;
-}
-
-.home-screen h1{
-    font-size:40px;
-    font-weight:900;
-}
-
-.home-screen p{
-    opacity:0.7;
-    margin-top:10px;
-}
-
-/* =========================
-   CHAT
-========================= */
 
 .messages{
-    flex:1;
-    overflow-y:auto;
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
+display:flex;
+flex-direction:column;
+gap:10px;
 }
 
-.message{
-    display:flex;
-    gap:10px;
-    align-items:flex-start;
-}
-
-.avatar{
-    width:40px;
-    height:40px;
-    border-radius:10px;
-    background:#2563EB;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:18px;
-}
-
-.bubble{
-    background:rgba(255,255,255,0.06);
-    padding:12px;
-    border-radius:12px;
-    max-width:70%;
-    line-height:1.6;
-}
-
-/* user */
-.user{
-    flex-direction:row-reverse;
-}
-
-.user .avatar{
-    background:#10B981;
-}
-
-.user .bubble{
-    background:#2563EB;
-}
-
-/* typing */
 .typing{
-    padding:10px 20px;
-    opacity:0.7;
+font-size:12px;
+opacity:0.6;
 }
 
 .hidden{
-    display:none;
+display:none;
 }
 
-/* =========================
-   FOOTER INPUT
-========================= */
-
-footer{
-    padding:15px;
-    background:rgba(255,255,255,0.04);
-    backdrop-filter:blur(18px);
+/* INPUT */
+.input-area{
+display:flex;
+gap:10px;
+padding:10px;
+background:rgba(255,255,255,0.04);
 }
 
-.chat-box{
-    display:flex;
-    gap:10px;
-    align-items:center;
-    background:#111827;
-    padding:10px;
-    border-radius:15px;
+.input-area input{
+flex:1;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#111827;
+color:white;
 }
 
-.chat-box input{
-    flex:1;
-    background:transparent;
-    border:none;
-    outline:none;
-    color:white;
-}
-
-.chat-box button{
-    width:40px;
-    height:40px;
-    border:none;
-    border-radius:10px;
-    background:#1E293B;
-    color:white;
-    cursor:pointer;
-}
-
-/* send */
 .send{
-    background:linear-gradient(135deg,#2563EB,#7C3AED);
+width:45px;
+background:#2563EB;
+border:none;
+border-radius:10px;
+color:white;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
+/* MODAL */
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:flex;
+justify-content:center;
+align-items:center;
+}
 
+.box{
+background:#111827;
+padding:20px;
+border-radius:15px;
+width:250px;
+}
+
+/* SIDEBAR */
 .sidebar{
-    position:fixed;
-    right:0;
-    top:0;
-    width:240px;
-    height:100%;
-    background:#0F172A;
-    border-left:1px solid rgba(255,255,255,0.08);
-    padding:20px;
-    transition:0.3s;
+position:fixed;
+right:0;
+top:0;
+width:220px;
+height:100%;
+background:#0F172A;
+padding:20px;
+transition:0.3s;
 }
 
 .sidebar.hidden{
-    transform:translateX(100%);
-}
-
-.sidebar ul{
-    list-style:none;
-    margin-top:20px;
-}
-
-.sidebar li{
-    padding:10px;
-    margin-bottom:10px;
-    background:#111827;
-    border-radius:10px;
-    display:flex;
-    gap:10px;
-    align-items:center;
-}
-
-/* =========================
-   MODALS
-========================= */
-
-.modal{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.6);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.modal-box{
-    width:300px;
-    background:#111827;
-    padding:20px;
-    border-radius:15px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.modal-box button{
-    padding:10px;
-    border:none;
-    border-radius:10px;
-    background:#1E293B;
-    color:white;
-    cursor:pointer;
-}
-
-/* =========================
-   ANIMATIONS
-========================= */
-
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-10px);}
-    100%{transform:translateY(0);}
+transform:translateX(100%);
 }
