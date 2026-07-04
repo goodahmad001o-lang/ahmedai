@@ -1,9 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+
+/* ===== AhmedAI V5 APP.JS ===== */
 
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const messages = document.getElementById("messages");
-const typing = document.getElementById("typing");
 
 const settingsBtn = document.getElementById("settingsBtn");
 const settingsModal = document.getElementById("settingsModal");
@@ -11,91 +11,83 @@ const closeSettings = document.getElementById("closeSettings");
 const clearChat = document.getElementById("clearChat");
 const aboutBtn = document.getElementById("aboutBtn");
 
-const sidebar = document.getElementById("sidebar");
-const menuBtn = document.getElementById("menuBtn");
+/* =========================
+   ارسال پیام
+========================= */
 
-function addMessage(text, sender){
-
-if(!messages) return;
-
-const div = document.createElement("div");
-div.className = "msg " + sender;
-div.textContent = text;
-
-messages.appendChild(div);
-messages.scrollTop = messages.scrollHeight;
-
+function addMessage(text, type){
+  const msg = document.createElement("div");
+  msg.classList.add(type);
+  msg.textContent = text;
+  messages.appendChild(msg);
+  messages.scrollTop = messages.scrollHeight;
 }
 
-async function sendMessage(){
+function sendMessage(){
 
-if(!input) return;
+  const text = input.value.trim();
+  if(text === "") return;
 
-const text = input.value.trim();
-if(!text) return;
+  addMessage(text, "user");
 
-addMessage(text,"user");
-input.value = "";
+  input.value = "";
 
-typing?.classList.remove("hidden");
-
-try{
-
-const res = await fetch("/chat",{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({message:text})
-});
-
-const data = await res.json();
-
-typing?.classList.add("hidden");
-addMessage(data.reply,"ai");
-
-}catch(err){
-
-typing?.classList.add("hidden");
-addMessage("خطا در ارتباط","ai");
-
+  // جواب ساده موقت (بعداً AI وصل می‌کنیم)
+  setTimeout(() => {
+    addMessage("🤖 در حال توسعه هوش مصنوعی هستم...", "bot");
+  }, 500);
 }
 
-}
+/* =========================
+   دکمه ارسال
+========================= */
 
-/* EVENTS SAFE */
-sendBtn?.addEventListener("click", sendMessage);
+sendBtn.addEventListener("click", sendMessage);
 
-input?.addEventListener("keydown",(e)=>{
-if(e.key==="Enter") sendMessage();
+input.addEventListener("keydown", (e) => {
+  if(e.key === "Enter"){
+    sendMessage();
+  }
 });
 
-settingsBtn?.addEventListener("click",()=>{
-settingsModal?.classList.remove("hidden");
+/* =========================
+   تنظیمات (حل مشکل اصلی تو)
+========================= */
+
+settingsBtn.addEventListener("click", () => {
+  settingsModal.classList.remove("hidden");
 });
 
-closeSettings?.addEventListener("click",()=>{
-settingsModal?.classList.add("hidden");
+closeSettings.addEventListener("click", () => {
+  settingsModal.classList.add("hidden");
 });
 
-clearChat?.addEventListener("click",()=>{
-messages.innerHTML = "";
-settingsModal?.classList.add("hidden");
+/* =========================
+   پاک کردن چت
+========================= */
+
+clearChat.addEventListener("click", () => {
+  messages.innerHTML = "";
+
+  addMessage("سلام 👋 من AhmedAI هستم", "bot");
+
+  settingsModal.classList.add("hidden");
 });
 
-aboutBtn?.addEventListener("click",()=>{
-alert("AhmedAI V4.1 - Stable Version");
+/* =========================
+   درباره
+========================= */
+
+aboutBtn.addEventListener("click", () => {
+  alert("AhmedAI V5\nساخته شده توسط تو 😎🚀");
 });
 
-menuBtn?.addEventListener("click",()=>{
-sidebar?.classList.toggle("hidden");
-});
+/* =========================
+   بستن مودال با کلیک بیرون
+========================= */
 
-/* ICONS SAFE */
-try{
-if(window.lucide){
-lucide.createIcons();
-}
-}catch(e){
-console.log("icons error ignored");
-}
-
+settingsModal.addEventListener("click", (e) => {
+  if(e.target === settingsModal){
+    settingsModal.classList.add("hidden");
+  }
 });
