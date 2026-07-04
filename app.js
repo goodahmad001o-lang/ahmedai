@@ -6,11 +6,20 @@ const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 const messages = document.getElementById("messages");
 
+const menuBtn = document.getElementById("menuBtn");
+const drawer = document.getElementById("drawer");
+const closeDrawer = document.getElementById("closeDrawer");
+
 const settingsBtn = document.getElementById("settingsBtn");
 const settingsModal = document.getElementById("settingsModal");
 const closeSettings = document.getElementById("closeSettings");
+
 const clearChat = document.getElementById("clearChat");
 const aboutBtn = document.getElementById("aboutBtn");
+const openPro = document.getElementById("openPro");
+
+const proModal = document.getElementById("proModal");
+const closePro = document.getElementById("closePro");
 
 /* =========================
    ADD MESSAGE
@@ -28,30 +37,15 @@ function addMessage(text, type){
 }
 
 /* =========================
-   TYPING EFFECT (BOT)
+   BOT RESPONSE (TEST MODE)
 ========================= */
 
-function typeMessage(text){
+function botReply(userText){
 
-    const msg = document.createElement("div");
-    msg.classList.add("bot");
+    setTimeout(() => {
+        addMessage("🤖 در حال پردازش: " + userText, "bot");
+    }, 500);
 
-    messages.appendChild(msg);
-
-    let i = 0;
-
-    const interval = setInterval(() => {
-
-        msg.textContent += text[i];
-        i++;
-
-        messages.scrollTop = messages.scrollHeight;
-
-        if(i >= text.length){
-            clearInterval(interval);
-        }
-
-    }, 20);
 }
 
 /* =========================
@@ -61,20 +55,12 @@ function typeMessage(text){
 function sendMessage(){
 
     const text = input.value.trim();
-
     if(text === "") return;
 
-    // user message
     addMessage(text, "user");
-
     input.value = "";
 
-    // bot fake response (فعلاً)
-    setTimeout(() => {
-
-        typeMessage("🤖 در حال پردازش درخواست شما هستم...");
-
-    }, 400);
+    botReply(text);
 }
 
 /* =========================
@@ -84,27 +70,64 @@ function sendMessage(){
 sendBtn.addEventListener("click", sendMessage);
 
 input.addEventListener("keydown", (e) => {
-
     if(e.key === "Enter"){
         sendMessage();
     }
-
 });
 
 /* =========================
-   SETTINGS
+   DRAWER CONTROL
+========================= */
+
+menuBtn.addEventListener("click", () => {
+    drawer.classList.remove("hidden");
+});
+
+closeDrawer.addEventListener("click", () => {
+    drawer.classList.add("hidden");
+});
+
+/* close drawer by clicking background */
+drawer.addEventListener("click", (e) => {
+    if(e.target === drawer){
+        drawer.classList.add("hidden");
+    }
+});
+
+/* =========================
+   SETTINGS MODAL
 ========================= */
 
 settingsBtn.addEventListener("click", () => {
-
     settingsModal.classList.remove("hidden");
-
 });
 
 closeSettings.addEventListener("click", () => {
-
     settingsModal.classList.add("hidden");
+});
 
+settingsModal.addEventListener("click", (e) => {
+    if(e.target === settingsModal){
+        settingsModal.classList.add("hidden");
+    }
+});
+
+/* =========================
+   PRO MODAL
+========================= */
+
+openPro.addEventListener("click", () => {
+    proModal.classList.remove("hidden");
+});
+
+closePro.addEventListener("click", () => {
+    proModal.classList.add("hidden");
+});
+
+proModal.addEventListener("click", (e) => {
+    if(e.target === proModal){
+        proModal.classList.add("hidden");
+    }
 });
 
 /* =========================
@@ -117,28 +140,5 @@ clearChat.addEventListener("click", () => {
 
     addMessage("👋 سلام! من AHMEDAI هستم", "bot");
 
-    settingsModal.classList.add("hidden");
-
-});
-
-/* =========================
-   ABOUT
-========================= */
-
-aboutBtn.addEventListener("click", () => {
-
-    alert("AHMEDAI V7\nAI Assistant Product 🚀");
-
-});
-
-/* =========================
-   CLOSE MODAL OUTSIDE CLICK
-========================= */
-
-settingsModal.addEventListener("click", (e) => {
-
-    if(e.target === settingsModal){
-        settingsModal.classList.add("hidden");
-    }
-
+    drawer.classList.add("hidden");
 });
