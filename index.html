@@ -1,75 +1,54 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AhmedAI</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AhmedAI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="topbar">
-  <div class="brand">AhmedAI</div>
+<div class="app">
 
-  <div class="actions">
-    <button id="menuBtn" class="icon-btn" data-lucide="menu"></button>
-    <button id="settingsBtn" class="icon-btn" data-lucide="settings"></button>
-  </div>
+<header class="header">
+  <div class="logo">AhmedAI</div>
+
+  <button id="settingsBtn" class="icon-btn">⚙</button>
 </header>
 
-<!-- HERO -->
-<section id="homeScreen" class="hero">
-  <h1>دستیار هوشمند شما</h1>
-  <p>چه کاری می‌خواهی انجام دهیم؟</p>
-
-  <div class="cards">
-    <div class="card">💻 برنامه‌نویسی</div>
-    <div class="card">🌍 ترجمه</div>
-    <div class="card">🧠 یادگیری</div>
-    <div class="card">💼 کسب‌وکار</div>
-  </div>
-</section>
-
-<!-- CHAT -->
 <main class="chat">
-  <div id="messages" class="messages"></div>
-  <div id="typing" class="typing hidden">درحال پاسخ...</div>
+
+  <div id="messages" class="messages">
+
+    <div class="bot">
+      سلام 👋 من AhmedAI هستم
+    </div>
+
+  </div>
+
 </main>
 
-<!-- INPUT -->
 <footer class="input-area">
-  <input id="userInput" placeholder="پیام خود را بنویس..." />
-  <button id="sendBtn" data-lucide="send"></button>
+
+  <input id="userInput" type="text" placeholder="پیام بنویس...">
+
+  <button id="sendBtn">ارسال</button>
+
 </footer>
 
-<!-- SETTINGS -->
-<div id="settingsModal" class="modal hidden">
-  <div class="box">
-    <button id="clearChat">🗑 پاک کردن چت</button>
-    <button id="aboutBtn">ℹ درباره AhmedAI</button>
-    <button id="closeSettings">بستن</button>
-  </div>
 </div>
 
-<!-- SIDEBAR -->
-<div id="sidebar" class="sidebar hidden">
-  <h3>AhmedAI</h3>
-  <ul>
-    <li>چت‌ها</li>
-    <li>حافظه</li>
-    <li>اشتراک Pro</li>
-    <li>تنظیمات</li>
-  </ul>
+<div id="settingsModal" class="modal hidden">
+  <div class="box">
+
+    <button id="closeSettings">بستن</button>
+    <button id="clearChat">پاک کردن چت</button>
+    <button id="aboutBtn">درباره</button>
+
+  </div>
 </div>
 
 <script src="app.js"></script>
-
 </body>
 </html>
