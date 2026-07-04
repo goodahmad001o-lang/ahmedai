@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AhmedAI</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AHMEDAI</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,70 +11,66 @@
 
 <div class="app">
 
-  <!-- ===== SIDEBAR ===== -->
-  <aside class="sidebar">
+  <!-- HEADER -->
+  <header class="topbar">
 
-    <div class="brand">
-      🤖 AhmedAI
+    <div class="logo">AHMEDAI</div>
+
+    <div class="top-actions">
+      <button id="settingsBtn">⚙</button>
     </div>
 
-    <button class="new-chat-btn">+ چت جدید</button>
+  </header>
 
-    <div class="chat-list">
-      <div class="chat-item">چت جدید 1</div>
-      <div class="chat-item">چت جدید 2</div>
-    </div>
+  <!-- HERO / WELCOME -->
+  <section class="hero">
 
-    <div class="menu">
-      <button id="settingsBtn">تنظیمات</button>
-      <button id="aboutBtn">درباره</button>
-    </div>
+    <h1>دستیار هوشمند فارسی</h1>
+    <p>برای آموزش، تولید محتوا و کارهای روزمره</p>
 
-  </aside>
+  </section>
 
-  <!-- ===== MAIN ===== -->
-  <main class="main">
+  <!-- FEATURE CARDS -->
+  <section class="cards">
 
-    <!-- HEADER -->
-    <header class="header">
-      <div>AhmedAI Assistant</div>
-      <button id="clearChat">پاک کردن</button>
-    </header>
+    <div class="card">📚 آموزش</div>
+    <div class="card">✍️ تولید محتوا</div>
+    <div class="card">💬 چت هوشمند</div>
+    <div class="card">🌍 ترجمه</div>
 
-    <!-- CHAT AREA -->
+  </section>
+
+  <!-- CHAT -->
+  <main class="chat">
+
     <div id="messages" class="messages">
 
       <div class="bot">
-        👋 سلام! من AhmedAI هستم  
-        چطور می‌تونم کمکت کنم؟
+        👋 سلام! من AHMEDAI هستم
       </div>
-
-    </div>
-
-    <!-- INPUT -->
-    <div class="input-box">
-
-      <input id="userInput" type="text" placeholder="پیام بنویس...">
-
-      <button id="sendBtn">ارسال</button>
 
     </div>
 
   </main>
 
+  <!-- INPUT -->
+  <footer class="input-bar">
+
+    <input id="userInput" placeholder="پیام بنویس...">
+
+    <button id="sendBtn">ارسال</button>
+
+  </footer>
+
 </div>
 
-<!-- ===== SETTINGS MODAL ===== -->
+<!-- MODAL -->
 <div id="settingsModal" class="modal hidden">
-
   <div class="modal-box">
-
-    <h3>تنظیمات</h3>
-
     <button id="closeSettings">بستن</button>
-
+    <button id="clearChat">پاک کردن چت</button>
+    <button id="aboutBtn">درباره</button>
   </div>
-
 </div>
 
 <script src="app.js"></script>
