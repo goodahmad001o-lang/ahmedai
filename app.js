@@ -1,4 +1,6 @@
-/* ===== ELEMENTS ===== */
+/* =========================
+   ELEMENTS
+========================= */
 
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
@@ -10,79 +12,133 @@ const closeSettings = document.getElementById("closeSettings");
 const clearChat = document.getElementById("clearChat");
 const aboutBtn = document.getElementById("aboutBtn");
 
-/* ===== SEND MESSAGE ===== */
+/* =========================
+   ADD MESSAGE
+========================= */
 
 function addMessage(text, type){
 
-  const msg = document.createElement("div");
-  msg.classList.add(type);
-  msg.textContent = text;
+    const msg = document.createElement("div");
+    msg.classList.add(type);
+    msg.textContent = text;
 
-  messages.appendChild(msg);
+    messages.appendChild(msg);
 
-  messages.scrollTop = messages.scrollHeight;
+    messages.scrollTop = messages.scrollHeight;
 }
 
-/* ===== MAIN SEND ===== */
+/* =========================
+   TYPING EFFECT (BOT)
+========================= */
+
+function typeMessage(text){
+
+    const msg = document.createElement("div");
+    msg.classList.add("bot");
+
+    messages.appendChild(msg);
+
+    let i = 0;
+
+    const interval = setInterval(() => {
+
+        msg.textContent += text[i];
+        i++;
+
+        messages.scrollTop = messages.scrollHeight;
+
+        if(i >= text.length){
+            clearInterval(interval);
+        }
+
+    }, 20);
+}
+
+/* =========================
+   SEND MESSAGE
+========================= */
 
 function sendMessage(){
 
-  const text = input.value.trim();
+    const text = input.value.trim();
 
-  if(text === "") return;
+    if(text === "") return;
 
-  // user message
-  addMessage(text, "user");
+    // user message
+    addMessage(text, "user");
 
-  input.value = "";
+    input.value = "";
 
-  // bot reply (فعلاً موقت)
-  setTimeout(() => {
-    addMessage("🤖 در حال پردازش هستم...", "bot");
-  }, 400);
+    // bot fake response (فعلاً)
+    setTimeout(() => {
+
+        typeMessage("🤖 در حال پردازش درخواست شما هستم...");
+
+    }, 400);
 }
 
-/* ===== EVENTS ===== */
+/* =========================
+   EVENTS
+========================= */
 
 sendBtn.addEventListener("click", sendMessage);
 
 input.addEventListener("keydown", (e) => {
-  if(e.key === "Enter"){
-    sendMessage();
-  }
+
+    if(e.key === "Enter"){
+        sendMessage();
+    }
+
 });
 
-/* ===== SETTINGS ===== */
+/* =========================
+   SETTINGS
+========================= */
 
 settingsBtn.addEventListener("click", () => {
-  settingsModal.classList.remove("hidden");
+
+    settingsModal.classList.remove("hidden");
+
 });
 
 closeSettings.addEventListener("click", () => {
-  settingsModal.classList.add("hidden");
+
+    settingsModal.classList.add("hidden");
+
 });
 
-/* ===== CLEAR CHAT ===== */
+/* =========================
+   CLEAR CHAT
+========================= */
 
 clearChat.addEventListener("click", () => {
 
-  messages.innerHTML = "";
+    messages.innerHTML = "";
 
-  addMessage("👋 سلام! من AhmedAI هستم", "bot");
+    addMessage("👋 سلام! من AHMEDAI هستم", "bot");
 
-  settingsModal.classList.add("hidden");
+    settingsModal.classList.add("hidden");
+
 });
 
-/* ===== ABOUT ===== */
+/* =========================
+   ABOUT
+========================= */
 
 aboutBtn.addEventListener("click", () => {
-  alert("AhmedAI V6\nساخته شده برای تبدیل شدن به یک محصول پول‌ساز 😎");
+
+    alert("AHMEDAI V7\nAI Assistant Product 🚀");
+
 });
 
-/* ===== CLOSE MODAL ===== */
+/* =========================
+   CLOSE MODAL OUTSIDE CLICK
+========================= */
 
 settingsModal.addEventListener("click", (e) => {
-  if(e.target === settingsModal){
-    settingsModal.classList.add("hidden");
-  }
+
+    if(e.target === settingsModal){
+        settingsModal.classList.add("hidden");
+    }
+
 });
