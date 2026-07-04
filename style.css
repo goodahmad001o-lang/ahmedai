@@ -1,146 +1,145 @@
+/* ===== AhmedAI V5 STYLE ===== */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Vazirmatn;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:sans-serif;
 }
 
 body{
-background:#0B1220;
-color:white;
-height:100vh;
-overflow:hidden;
+  background:#0b1220;
+  color:white;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-/* TOPBAR */
-.topbar{
-display:flex;
-justify-content:space-between;
-padding:15px;
-background:rgba(255,255,255,0.04);
-backdrop-filter:blur(15px);
+/* کل اپ */
+.app{
+  width:100%;
+  max-width:420px;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:#0f172a;
+}
+
+/* هدر */
+.header{
+  height:60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 15px;
+  background:#111827;
+  border-bottom:1px solid #1f2937;
+}
+
+.logo{
+  font-weight:bold;
+  font-size:18px;
 }
 
 .icon-btn{
-width:40px;
-height:40px;
-border:none;
-border-radius:10px;
-background:#111827;
-color:white;
+  width:38px;
+  height:38px;
+  border:none;
+  border-radius:10px;
+  background:#1f2937;
+  color:white;
 }
 
-/* HERO */
-.hero{
-text-align:center;
-padding:20px;
-}
-
-.hero h1{
-font-size:22px;
-}
-
-.hero p{
-opacity:0.7;
-}
-
-.cards{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:15px;
-padding:10px;
-}
-
-.card{
-background:#111827;
-padding:15px;
-border-radius:12px;
-}
-
-/* CHAT */
+/* چت */
 .chat{
-flex:1;
-overflow-y:auto;
-padding:10px;
+  flex:1;
+  overflow-y:auto;
+  padding:15px;
 }
 
 .messages{
-display:flex;
-flex-direction:column;
-gap:10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 
-.typing{
-font-size:12px;
-opacity:0.6;
-margin-top:5px;
+.bot{
+  background:#1f2937;
+  padding:12px;
+  border-radius:12px;
+  width:fit-content;
+  max-width:80%;
 }
 
-.hidden{
-display:none !important;
+/* پیام کاربر */
+.user{
+  background:#2563eb;
+  padding:12px;
+  border-radius:12px;
+  width:fit-content;
+  max-width:80%;
+  align-self:flex-end;
 }
 
-/* INPUT */
+/* ورودی */
 .input-area{
-display:flex;
-gap:10px;
-padding:10px;
-background:rgba(255,255,255,0.04);
+  display:flex;
+  gap:10px;
+  padding:10px;
+  background:#111827;
+  border-top:1px solid #1f2937;
 }
 
 .input-area input{
-flex:1;
-padding:12px;
-border:none;
-border-radius:10px;
-background:#111827;
-color:white;
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  outline:none;
+  background:#1f2937;
+  color:white;
 }
 
 .input-area button{
-width:45px;
-background:#2563EB;
-border:none;
-border-radius:10px;
-color:white;
+  padding:12px 15px;
+  border:none;
+  border-radius:10px;
+  background:#2563eb;
+  color:white;
 }
 
-/* MODAL */
+/* تنظیمات */
 .modal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-justify-content:center;
-align-items:center;
-display:flex;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .box{
-background:#111827;
-padding:20px;
-border-radius:15px;
-width:250px;
-display:flex;
-flex-direction:column;
-gap:10px;
+  width:250px;
+  background:#111827;
+  padding:15px;
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 
-/* SIDEBAR */
-.sidebar{
-position:fixed;
-right:0;
-top:0;
-width:220px;
-height:100%;
-background:#0F172A;
-padding:20px;
-transition:0.3s;
+.box button{
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:#1f2937;
+  color:white;
 }
 
-.sidebar.hidden{
-transform:translateX(100%);
+.hidden{
+  display:none;
 }
