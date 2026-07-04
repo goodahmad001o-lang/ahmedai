@@ -1,5 +1,4 @@
-
-/* ===== AhmedAI V5 APP.JS ===== */
+/* ===== ELEMENTS ===== */
 
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
@@ -11,36 +10,39 @@ const closeSettings = document.getElementById("closeSettings");
 const clearChat = document.getElementById("clearChat");
 const aboutBtn = document.getElementById("aboutBtn");
 
-/* =========================
-   ارسال پیام
-========================= */
+/* ===== SEND MESSAGE ===== */
 
 function addMessage(text, type){
+
   const msg = document.createElement("div");
   msg.classList.add(type);
   msg.textContent = text;
+
   messages.appendChild(msg);
+
   messages.scrollTop = messages.scrollHeight;
 }
+
+/* ===== MAIN SEND ===== */
 
 function sendMessage(){
 
   const text = input.value.trim();
+
   if(text === "") return;
 
+  // user message
   addMessage(text, "user");
 
   input.value = "";
 
-  // جواب ساده موقت (بعداً AI وصل می‌کنیم)
+  // bot reply (فعلاً موقت)
   setTimeout(() => {
-    addMessage("🤖 در حال توسعه هوش مصنوعی هستم...", "bot");
-  }, 500);
+    addMessage("🤖 در حال پردازش هستم...", "bot");
+  }, 400);
 }
 
-/* =========================
-   دکمه ارسال
-========================= */
+/* ===== EVENTS ===== */
 
 sendBtn.addEventListener("click", sendMessage);
 
@@ -50,9 +52,7 @@ input.addEventListener("keydown", (e) => {
   }
 });
 
-/* =========================
-   تنظیمات (حل مشکل اصلی تو)
-========================= */
+/* ===== SETTINGS ===== */
 
 settingsBtn.addEventListener("click", () => {
   settingsModal.classList.remove("hidden");
@@ -62,29 +62,24 @@ closeSettings.addEventListener("click", () => {
   settingsModal.classList.add("hidden");
 });
 
-/* =========================
-   پاک کردن چت
-========================= */
+/* ===== CLEAR CHAT ===== */
 
 clearChat.addEventListener("click", () => {
+
   messages.innerHTML = "";
 
-  addMessage("سلام 👋 من AhmedAI هستم", "bot");
+  addMessage("👋 سلام! من AhmedAI هستم", "bot");
 
   settingsModal.classList.add("hidden");
 });
 
-/* =========================
-   درباره
-========================= */
+/* ===== ABOUT ===== */
 
 aboutBtn.addEventListener("click", () => {
-  alert("AhmedAI V5\nساخته شده توسط تو 😎🚀");
+  alert("AhmedAI V6\nساخته شده برای تبدیل شدن به یک محصول پول‌ساز 😎");
 });
 
-/* =========================
-   بستن مودال با کلیک بیرون
-========================= */
+/* ===== CLOSE MODAL ===== */
 
 settingsModal.addEventListener("click", (e) => {
   if(e.target === settingsModal){
