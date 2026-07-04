@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AhmedAI</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,44 +12,73 @@
 
 <div class="app">
 
-<header class="header">
-  <div class="logo">AhmedAI</div>
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
 
-  <button id="settingsBtn" class="icon-btn">⚙</button>
-</header>
-
-<main class="chat">
-
-  <div id="messages" class="messages">
-
-    <div class="bot">
-      سلام 👋 من AhmedAI هستم
+    <div class="brand">
+      🤖 AhmedAI
     </div>
 
-  </div>
+    <button class="new-chat-btn">+ چت جدید</button>
 
-</main>
+    <div class="chat-list">
+      <div class="chat-item">چت جدید 1</div>
+      <div class="chat-item">چت جدید 2</div>
+    </div>
 
-<footer class="input-area">
+    <div class="menu">
+      <button id="settingsBtn">تنظیمات</button>
+      <button id="aboutBtn">درباره</button>
+    </div>
 
-  <input id="userInput" type="text" placeholder="پیام بنویس...">
+  </aside>
 
-  <button id="sendBtn">ارسال</button>
+  <!-- ===== MAIN ===== -->
+  <main class="main">
 
-</footer>
+    <!-- HEADER -->
+    <header class="header">
+      <div>AhmedAI Assistant</div>
+      <button id="clearChat">پاک کردن</button>
+    </header>
+
+    <!-- CHAT AREA -->
+    <div id="messages" class="messages">
+
+      <div class="bot">
+        👋 سلام! من AhmedAI هستم  
+        چطور می‌تونم کمکت کنم؟
+      </div>
+
+    </div>
+
+    <!-- INPUT -->
+    <div class="input-box">
+
+      <input id="userInput" type="text" placeholder="پیام بنویس...">
+
+      <button id="sendBtn">ارسال</button>
+
+    </div>
+
+  </main>
 
 </div>
 
+<!-- ===== SETTINGS MODAL ===== -->
 <div id="settingsModal" class="modal hidden">
-  <div class="box">
+
+  <div class="modal-box">
+
+    <h3>تنظیمات</h3>
 
     <button id="closeSettings">بستن</button>
-    <button id="clearChat">پاک کردن چت</button>
-    <button id="aboutBtn">درباره</button>
 
   </div>
+
 </div>
 
 <script src="app.js"></script>
+
 </body>
 </html>
