@@ -1,5 +1,5 @@
 {
-  "name": "ahmed-ai",
+  "name": "ahmedai",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,15 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
     "next": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "lucide-react": "latest"
+    "lucide-react": "^0.263.1"
   },
   "devDependencies": {
-    "autoprefixer": "latest",
-    "postcss": "latest",
-    "tailwindcss": "latest"
+    "autoprefixer": "^10",
+    "postcss": "^8",
+    "tailwindcss": "^3"
   }
 }
-
