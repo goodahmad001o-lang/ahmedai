@@ -1,58 +1,50 @@
-"use client";
-import { useState } from 'react';
+import Link from 'next/link';
 
-export default function Home() {
-  const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const sendMessage = async () => {
-    if (!input.trim()) return;
-    
-    const userMessage = { role: 'user', content: input };
-    const newMessages = [...messages, userMessage];
-    setMessages(newMessages);
-    setInput('');
-    setLoading(true);
-
-    try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        body: JSON.stringify({ messages: newMessages }),
-      });
-      const data = await res.json();
-      setMessages([...newMessages, data]);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+export default function LandingPage() {
   return (
-    <div style={{ maxWidth: '600px', margin: '50px auto', padding: '20px', fontFamily: 'sans-serif' }}>
-      <h1>AhmedAI 🚀</h1>
-      <div style={{ height: '400px', overflowY: 'auto', border: '1px solid #ccc', padding: '10px', marginBottom: '10px', borderRadius: '8px' }}>
-        {messages.map((m, i) => (
-          <div key={i} style={{ textAlign: m.role === 'user' ? 'right' : 'left', margin: '10px 0' }}>
-            <span style={{ background: m.role === 'user' ? '#007bff' : '#eee', color: m.role === 'user' ? '#fff' : '#000', padding: '5px 10px', borderRadius: '10px', display: 'inline-block' }}>
-              {m.content}
-            </span>
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white flex flex-col items-center justify-center px-4">
+      {/* بخش معرفی اصلی (Hero Section) */}
+      <main className="text-center max-w-3xl">
+        <div className="mb-6 inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium">
+          نسخه جدید AhmedAI منتشر شد
+        </div>
+        
+        <h1 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          AhmedAI
+        </h1>
+        
+        <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
+          هوش مصنوعی فوق پیشرفته برای حل مسائل پیچیده، برنامه‌نویسی و تولید محتوا. <br />
+          با AhmedAI، مرزهای توانایی خود را جابجا کنید.
+        </p>
+
+        {/* دکمه ورود که گفتی */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link 
+            href="/login" 
+            className="px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/20"
+          >
+            همین الان وارد شو
+          </Link>
+          <button className="px-10 py-4 border border-slate-200 dark:border-slate-800 rounded-xl font-medium text-lg hover:bg-slate-50 dark:hover:bg-slate-900 transition-all">
+            مشاهده ویژگی‌ها
+          </button>
+        </div>
+      </main>
+
+      {/* بخش ویژگی‌ها */}
+      <section className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl w-full">
+        {[
+          { title: "هوشمند", desc: "استفاده از قدرتمندترین مدل‌های زبانی" },
+          { title: "سریع", desc: "پاسخ‌های آنی و پردازش در لحظه" },
+          { title: "امن", desc: "حفاظت کامل از داده‌های کاربران" }
+        ].map((item, i) => (
+          <div key={i} className="p-8 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-center">
+            <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+            <p className="text-slate-500 dark:text-slate-400">{item.desc}</p>
           </div>
         ))}
-        {loading && <p>در حال تایپ...</p>}
-      </div>
-      <div style={{ display: 'flex', gap: '10px' }}>
-        <input 
-          style={{ flex: 1, padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
-          value={input} 
-          onChange={(e) => setInput(e.target.value)} 
-          placeholder="چیزی بپرس..."
-          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-        />
-        <button onClick={sendMessage} style={{ padding: '10px 20px', cursor: 'pointer', background: '#000', color: '#fff', borderRadius: '5px' }}>ارسال</button>
-      </div>
+      </section>
     </div>
   );
-          }
-            
+}
