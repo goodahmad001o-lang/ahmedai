@@ -1,66 +1,120 @@
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-html,
-body{
-  width:100%;
-  height:100%;
-  font-family:Tahoma,sans-serif;
-  background:#0f172a;
-  color:#fff;
-  overflow:hidden;
+html,body{
+width:100%;
+height:100%;
+font-family:Tahoma,sans-serif;
+background:#0f172a;
+color:#fff;
 }
 
 body{
-  display:flex;
+background:linear-gradient(135deg,#020617,#0f172a,#1e293b);
 }
 
 a{
-  color:inherit;
-  text-decoration:none;
+text-decoration:none;
+color:inherit;
 }
 
 button{
-  cursor:pointer;
-  border:none;
-  outline:none;
+cursor:pointer;
+border:none;
+transition:.3s;
 }
 
-input,
-textarea{
-  border:none;
-  outline:none;
-  font-family:inherit;
+input{
+width:100%;
+padding:16px;
+margin-top:15px;
+border-radius:12px;
+border:1px solid #334155;
+background:#111827;
+color:white;
+font-size:16px;
 }
 
-::-webkit-scrollbar{
-  width:8px;
+input:focus{
+border-color:#2563eb;
 }
 
-::-webkit-scrollbar-thumb{
-  background:#334155;
-  border-radius:20px;
+.login-page{
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
 }
 
-::-webkit-scrollbar-track{
-  background:#111827;
+.login-card{
+width:430px;
+background:#111827;
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 40px rgba(0,0,0,.35);
+border:1px solid #1f2937;
 }
 
-:root{
-  --bg:#0f172a;
-  --card:#1e293b;
-  --primary:#2563eb;
-  --text:#ffffff;
-  --border:#334155;
+.logo{
+font-size:45px;
+text-align:center;
+margin-bottom:10px;
+font-weight:bold;
+color:#fff;
 }
 
-.light{
-  --bg:#f8fafc;
-  --card:#ffffff;
-  --primary:#2563eb;
-  --text:#111827;
-  --border:#d1d5db;
+.subtitle{
+text-align:center;
+color:#94a3b8;
+margin-bottom:30px;
+line-height:1.8;
+}
+
+form button{
+margin-top:25px;
+width:100%;
+padding:16px;
+border-radius:12px;
+background:#2563eb;
+color:white;
+font-size:18px;
+font-weight:bold;
+}
+
+form button:hover{
+background:#1d4ed8;
+}
+
+.switch-btn{
+margin-top:20px;
+background:transparent;
+color:#60a5fa;
+width:100%;
+font-size:15px;
+}
+
+.switch-btn:hover{
+color:white;
+}
+
+@media(max-width:500px){
+
+.login-card{
+
+width:100%;
+padding:30px;
+
+}
+
+.logo{
+
+font-size:35px;
+
+}
+
 }
